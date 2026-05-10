@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- version: 1.4 | 2026.05.10 -->
+  <!-- version: 1.5 | 2026.05.10 -->
   <title>混沌観測所</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -66,13 +66,11 @@
     .header-menu { font-size: 11px; font-family: 'Share Tech Mono', monospace; color: #c0c8e888; margin-left: 6px; }
     .header-exit  { margin-left: auto; font-size: 11px; font-family: 'Share Tech Mono', monospace; color: #c0c8e877; }
 
-    /* ---- ナビゲーション（楕円ボタン） ---- */
+    /* ---- ナビゲーション（楕円ボタン・中央カラム内） ---- */
     .nb {
-      background: #0e0e60;
-      border-bottom: 2px solid #7a7a8a;
-      padding: 6px 14px;
       display: flex; gap: 8px; flex-wrap: wrap;
       align-items: center;
+      padding: 4px 0 2px 0;
     }
     .nb a {
       color: #a0b0d0; text-decoration: none;
@@ -174,7 +172,6 @@
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
-      mix-blend-mode: screen;
       z-index: 1;
     }
     .chara-img.active { opacity: 1; }
@@ -287,15 +284,6 @@
     </div>
   </div>
 
-  <!-- ナビゲーション（楕円ボタン） -->
-  <nav class="nb">
-    <a class="act" href="index.html">Home</a>
-    <a href="works.html">OCs</a>
-    <a href="gallery.html">イラスト</a>
-    <a href="links.html">SNS</a>
-    <a href="links.html">リンク</a>
-  </nav>
-
   <!-- マーキー -->
   <div class="mq">
     <div class="mqi">★ ようこそ混沌観測所へ ★　現在４作品公開中　★　各作品ページを更新中　★　イラストギャラリー準備中　★　リンク申請受付中　★</div>
@@ -345,6 +333,15 @@
 
     <!-- 中央カラム -->
     <div class="cc">
+
+      <!-- ナビゲーション（楕円ボタン） -->
+      <nav class="nb">
+        <a class="act" href="index.html">Home</a>
+        <a href="works.html">OCs</a>
+        <a href="gallery.html">イラスト</a>
+        <a href="links.html">SNS</a>
+        <a href="links.html">リンク</a>
+      </nav>
 
       <!-- ウェルカム -->
       <div class="wb">
