@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- version: 1.6 | 2026.05.10 -->
+  <!-- version: 1.7 | 2026.05.10 -->
   <title>混沌観測所</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -261,6 +261,31 @@
       line-height: 1.8;
     }
 
+    /* ---- フレンドバナー ---- */
+    .friend-banners {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      align-items: center;
+    }
+    .friend-banners a {
+      display: block;
+      border: 1px solid #7a7a8a;
+      line-height: 0;
+      transition: border-color 0.15s, opacity 0.15s;
+      opacity: 0.9;
+    }
+    .friend-banners a:hover {
+      border-color: #a0b0d0;
+      opacity: 1;
+    }
+    .friend-banners img {
+      display: block;
+      height: 31px;
+      width: auto;
+      image-rendering: pixelated;
+    }
+
     /* ---- デコ・フッター ---- */
     .dd { font-size: 9px; color: #2a2a60; letter-spacing: 1px; text-align: center; padding: 2px 0; font-family: 'Share Tech Mono', monospace; }
     .sf { border-top: 1px solid #7a7a8a; background: #080840; padding: 6px 10px; text-align: center; font-size: 9px; color: #404466; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; }
@@ -355,6 +380,17 @@
         </div>
         <div class="wn">
           ⚠ このサイトはデスクトップ表示推奨です。一部ページに閲覧注意の表記があります。
+        </div>
+      </div>
+
+      <!-- フレンドバナー -->
+      <div class="bx">
+        <div class="bt">Links</div>
+        <div class="friend-banners">
+          <a href="#" title="HELLO WORLD"><img src="banners/banner_helloworld.png" alt="HELLO WORLD"></a>
+          <a href="#" title="すきすきランド"><img src="banners/banner_sukisuki.png" alt="すきすきランド"></a>
+          <a href="#" title="Deep Blue"><img src="banners/banner_deepblue.png" alt="Deep Blue"></a>
+          <a href="#" title="SILVER CHAOS"><img src="banners/banner_silverchaos.png" alt="SILVER CHAOS"></a>
         </div>
       </div>
 
