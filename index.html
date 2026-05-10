@@ -24,7 +24,10 @@
     }
 
     .sw {
-      background: #16167a;
+      background-color: #16167a;
+      background-image: url('background.png');
+      background-size: cover;
+      background-position: center;
       width: 860px;
       min-height: 600px;
       font-family: 'DotGothic16', monospace;
@@ -40,11 +43,9 @@
       height: 52px;
       overflow: hidden;
       border-bottom: 2px solid #909098;
-      /* ★ 画像に差し替える場合:
-         background-image: url('header-bg.jpg');
-         background-size: cover;
-         background-position: center;
-      */
+      background-image: url('header-banner.png');
+      background-size: cover;
+      background-position: center;
     }
     .header-banner-bg {
       position: absolute; inset: 0;
@@ -202,7 +203,6 @@
 
   <!-- ヘッダーバナー -->
   <div class="header-banner">
-    <div class="header-banner-bg"></div>
     <div class="header-banner-dots"></div>
     <div class="header-banner-content">
       <div class="tbt">
