@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- version: 1.5 | 2026.05.10 -->
+  <!-- version: 1.6 | 2026.05.10 -->
   <title>混沌観測所</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -74,10 +74,10 @@
     }
     .nb a {
       color: #a0b0d0; text-decoration: none;
-      padding: 3px 14px;
+      padding: 6px 20px;
       border: 1px solid #7a7a8a;
       background: #16167a;
-      font-family: 'DotGothic16', monospace; font-size: 11px;
+      font-family: 'DotGothic16', monospace; font-size: 13px;
       border-radius: 999px;
       transition: background 0.15s, color 0.15s;
     }
@@ -365,7 +365,7 @@
 
           <!-- キャラクター画像エリア -->
           <div class="chara-zone">
-            <img class="chara-img" id="ci1" src="chara01.png" alt="">
+            <img class="chara-img active" id="ci1" src="chara01.png" alt="">
             <img class="chara-img" id="ci2" src="chara02.png" alt="">
             <img class="chara-img" id="ci3" src="chara03.png" alt="">
             <img class="chara-img" id="ci4" src="chara04.png" alt="">
@@ -493,6 +493,7 @@
     for (let i = 1; i <= 4; i++) {
       document.getElementById('ci' + i).classList.remove('active');
     }
+    document.getElementById('ci1').classList.add('active');
   }
 </script>
 
