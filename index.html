@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>混沌観測所</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0820;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 20px;
+      /* ★ 背景画像を使う場合はここを変更:
+         background-image: url('bg.jpg');
+         background-size: cover;
+         background-attachment: fixed;
+      */
+    }
+
+    .sw {
+      background: #16167a;
+      width: 860px;
+      min-height: 600px;
+      font-family: 'DotGothic16', monospace;
+      color: #b0c0e0;
+      border: 2px solid #909098;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ---- ヘッダーバナー（画像差し替え可） ---- */
+    .header-banner {
+      position: relative;
+      height: 52px;
+      overflow: hidden;
+      border-bottom: 2px solid #909098;
+      /* ★ 画像に差し替える場合:
+         background-image: url('header-bg.jpg');
+         background-size: cover;
+         background-position: center;
+      */
+    }
+    .header-banner-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 25% 120% at 8%  50%, #3a1a5a 0%, transparent 55%),
+        radial-gradient(ellipse 20% 100% at 28% 80%, #1a1a7a 0%, transparent 50%),
+        radial-gradient(ellipse 18% 120% at 42% 30%, #cc5500 0%, transparent 40%),
+        radial-gradient(ellipse 15% 100% at 50% 60%, #dd8800 0%, transparent 35%),
+        radial-gradient(ellipse 20% 120% at 62% 40%, #cc3300 0%, transparent 45%),
+        radial-gradient(ellipse 22% 100% at 75% 70%, #1a1a6a 0%, transparent 50%),
+        radial-gradient(ellipse 25% 120% at 88% 30%, #8a1a3a 0%, transparent 50%),
+        radial-gradient(ellipse 30% 100% at 95% 60%, #2a1a6a 0%, transparent 50%),
+        linear-gradient(135deg, #2a1040 0%, #1a1a7a 30%, #0a0a50 50%, #3a1020 70%, #1a1060 100%);
+    }
+    .header-banner-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.35) 1px, transparent 1px);
+      background-size: 3px 3px;
+    }
+    .header-banner-content {
+      position: absolute; inset: 0;
+      display: flex; align-items: center;
+      padding: 0 10px; gap: 10px;
+    }
+    .tbt { display: flex; gap: 4px; }
+    .tbtn {
+      width: 22px; height: 15px;
+      border: 1px solid #90909880;
+      background: #00000030;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px; color: #ffffff99;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .header-menu { font-size: 11px; font-family: 'Share Tech Mono', monospace; color: #c0c8e888; margin-left: 6px; }
+    .header-exit  { margin-left: auto; font-size: 11px; font-family: 'Share Tech Mono', monospace; color: #c0c8e877; }
+
+    /* ---- ナビゲーション ---- */
+    .nb {
+      background: #0e0e60;
+      border-bottom: 2px solid #7a7a8a;
+      padding: 5px 10px;
+      display: flex; gap: 5px; flex-wrap: wrap;
+    }
+    .nb a {
+      color: #a0b0d0; text-decoration: none;
+      padding: 2px 8px;
+      border: 1px solid #7a7a8a;
+      background: #16167a;
+      font-family: 'DotGothic16', monospace; font-size: 11px;
+    }
+    .nb a:hover { background: #1e1e8a; color: #fff; }
+    .nb a.act   { background: #1e1e8a; color: #fff; border-color: #a0b0d0; }
+
+    /* ---- マーキー ---- */
+    .mq { overflow: hidden; border-bottom: 1px solid #7a7a8a; background: #0a0a50; padding: 3px 0; }
+    @keyframes mq { 0%{transform:translateX(100%)} 100%{transform:translateX(-100%)} }
+    .mqi {
+      display: inline-block; white-space: nowrap;
+      animation: mq 22s linear infinite;
+      font-size: 10px; color: #606888;
+      font-family: 'Share Tech Mono', monospace; letter-spacing: 1px;
+    }
+
+    /* ---- 3カラム ---- */
+    .tc { display: grid; grid-template-columns: 158px 1fr 158px; min-height: 460px; }
+    .cl { border-right: 1px dashed #7a7a8a; padding: 8px; display: flex; flex-direction: column; gap: 8px; }
+    .cr { border-left:  1px dashed #7a7a8a; padding: 8px; display: flex; flex-direction: column; gap: 8px; }
+    .cc { padding: 10px; display: flex; flex-direction: column; gap: 10px; }
+
+    /* ---- ボックス共通 ---- */
+    .bx { border: 1px solid #7a7a8a; background: #12127088; padding: 6px; }
+    .bt {
+      font-size: 11px; color: #e8ddd0;
+      background: #6e1010;
+      padding: 3px 6px;
+      margin: -6px -6px 6px -6px;
+      letter-spacing: 1px;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .bt::before { content: '▶'; font-size: 8px; color: #f0a898; }
+    .bc { font-size: 11px; color: #8a9ccc; line-height: 1.8; font-family: 'DotGothic16', monospace; }
+
+    /* ---- ナビリンク ---- */
+    .nl {
+      display: block; font-size: 11px; color: #90aad0;
+      text-decoration: none; padding: 2px 0;
+      font-family: 'DotGothic16', monospace;
+    }
+    .nl::before { content: '◆ '; color: #d07858; font-size: 8px; }
+    .nl:hover { color: #fff; }
+
+    /* ---- ウェルカムボックス ---- */
+    .wb { border: 2px solid #7a7a8a; background: #12127088; padding: 10px; }
+    .wh { background: #6e1010; margin: -10px -10px 10px -10px; padding: 5px 10px; }
+    .wt { font-size: 14px; color: #e8ddd0; letter-spacing: 3px; font-family: 'DotGothic16', monospace; }
+    .wtx { font-size: 11px; color: #8a9ccc; line-height: 2; font-family: 'DotGothic16', monospace; }
+    .wn { margin-top: 8px; font-size: 11px; color: #d08860; border-top: 1px dashed #7a7a8a; padding-top: 6px; font-family: 'DotGothic16', monospace; }
+
+    /* ---- 創作カード ---- */
+    .wg  { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .wc  { border: 1px solid #7a7a8a; background: #0c0c52; padding: 8px; cursor: pointer; position: relative; overflow: hidden; text-decoration: none; display: block; }
+    .wc:hover { border-color: #a0b0d0; background: #16167a; }
+    .wc::after { content: 'ENTER ▶'; position: absolute; bottom: 4px; right: 5px; font-size: 8px; color: #7a7a8a; font-family: 'Share Tech Mono', monospace; }
+    .wc:hover::after { color: #a0b0d0; }
+    .wn2 { font-size: 8px; color: #7a7a8a; font-family: 'Share Tech Mono', monospace; margin-bottom: 2px; }
+    .wtt { font-size: 12px; color: #c0d0ee; font-family: 'DotGothic16', monospace; line-height: 1.4; }
+    .wg2 { font-size: 9px; color: #60709a; font-family: 'Share Tech Mono', monospace; margin-top: 4px; }
+
+    /* ---- スタンプ・バナー ---- */
+    .br { display: flex; flex-wrap: wrap; gap: 3px; }
+    .st { border: 1px solid #7a7a8a; background: #0c0c52; padding: 2px 5px; font-size: 8px; font-family: 'Share Tech Mono', monospace; color: #60709a; cursor: pointer; white-space: nowrap; }
+    .st:hover { background: #1e1e8a; color: #fff; }
+    .st.hl { color: #d8b860; border-color: #6e1010; }
+
+    /* ---- カウンター ---- */
+    .ct { background: #060636; border: 1px solid #7a7a8a; padding: 5px; text-align: center; }
+    .cl2 { font-size: 9px; color: #7a7a8a; font-family: 'Share Tech Mono', monospace; margin-bottom: 2px; }
+    .cn  { font-size: 14px; color: #00dd66; font-family: 'Share Tech Mono', monospace; letter-spacing: 2px; }
+
+    @keyframes bl { 0%,100%{opacity:1} 50%{opacity:0} }
+    .bl { animation: bl 1.2s infinite; }
+
+    /* ---- 更新情報 ---- */
+    .ui { display: flex; gap: 6px; font-size: 11px; padding: 3px 0; border-bottom: 1px dashed #1e1e6a; align-items: flex-start; font-family: 'DotGothic16', monospace; }
+    .ud { color: #606888; font-family: 'Share Tech Mono', monospace; white-space: nowrap; font-size: 9px; margin-top: 1px; }
+    .ut { color: #8a9ccc; line-height: 1.6; }
+
+    /* ---- NEWバッジ ---- */
+    .bn { display: inline-block; background: #6e1010; color: #e8ddd0; font-size: 7px; padding: 1px 4px; font-family: 'Share Tech Mono', monospace; vertical-align: middle; margin-left: 4px; animation: bl 1.5s infinite; }
+
+    /* ---- デコ・フッター ---- */
+    .dd { font-size: 9px; color: #2a2a60; letter-spacing: 1px; text-align: center; padding: 2px 0; font-family: 'Share Tech Mono', monospace; }
+    .sf { border-top: 1px solid #7a7a8a; background: #080840; padding: 6px 10px; text-align: center; font-size: 9px; color: #404466; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; }
+
+    /* ---- SoundCloud埋め込み ---- */
+    .sc-wrap { background: #060636; border: 1px solid #7a7a8a; padding: 6px; }
+    .sc-wrap .bt { font-size: 11px; }
+    .sc-embed { margin-top: 0; }
+    .sc-embed iframe { display: block; width: 100%; border: none; }
+    .sc-placeholder {
+      background: #0a0a40;
+      border: 1px dashed #7a7a8a;
+      padding: 10px;
+      text-align: center;
+      font-size: 10px;
+      color: #606888;
+      font-family: 'Share Tech Mono', monospace;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+<div class="sw">
+
+  <!-- ヘッダーバナー -->
+  <div class="header-banner">
+    <div class="header-banner-bg"></div>
+    <div class="header-banner-dots"></div>
+    <div class="header-banner-content">
+      <div class="tbt">
+        <div class="tbtn">◀◀</div>
+        <div class="tbtn">❚❚</div>
+        <div class="tbtn">▶▶</div>
+      </div>
+      <div class="header-menu">File | View | Edit | New | Help</div>
+      <div class="header-exit">Exit | ✕</div>
+    </div>
+  </div>
+
+  <!-- ナビゲーション -->
+  <nav class="nb">
+    <a class="act" href="index.html">Home</a>
+    <a href="works.html">創作一覧</a>
+    <a href="characters.html">キャラクター</a>
+    <a href="gallery.html">イラスト</a>
+    <a href="lore.html">設定資料室</a>
+    <a href="updates.html">更新履歴</a>
+    <a href="links.html">リンク</a>
+    <a href="about.html">管理人について</a>
+  </nav>
+
+  <!-- マーキー -->
+  <div class="mq">
+    <div class="mqi">★ ようこそ混沌観測所へ ★　現在４作品公開中　★　サイト移転しました　★　各作品ページを更新中　★　イラストギャラリー準備中　★　リンク申請受付中　★</div>
+  </div>
+
+  <!-- 3カラム -->
+  <div class="tc">
+
+    <!-- 左カラム -->
+    <div class="cl">
+      <div class="bx">
+        <div class="bt">Navigation</div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <a class="nl" href="index.html">ホーム</a>
+          <a class="nl" href="works.html">創作一覧</a>
+          <a class="nl" href="characters.html">キャラクター</a>
+          <a class="nl" href="gallery.html">イラストギャラリー</a>
+          <a class="nl" href="lore.html">設定資料室</a>
+          <a class="nl" href="updates.html">更新履歴</a>
+          <a class="nl" href="about.html">管理人について</a>
+          <a class="nl" href="links.html">リンク集</a>
+          <a class="nl" href="guestbook.html">ゲストブック</a>
+        </div>
+      </div>
+
+      <div class="bx">
+        <div class="bt">サイトについて</div>
+        <div class="bc">
+          管理人：<span style="color:#c0d0ee">◇</span><br>
+          <!-- ★ 管理人名・開設日を書き換えてください -->
+          開設：20XX.XX.XX<br>
+          ジャンル：オリジナル<br><br>
+          <span style="color:#d08860">✦ 閲覧注意あり</span><br>
+          <span style="color:#7a7a8a">18禁要素なし</span>
+        </div>
+      </div>
+
+      <div class="ct">
+        <div class="cl2">VISITOR COUNT</div>
+        <!-- ★ 無料カウンターサービス（忍者ツールズ等）のコードに差し替え可 -->
+        <div class="cn">000<span class="bl">|</span>0001</div>
+      </div>
+
+      <div class="bx">
+        <div class="bt">バナー</div>
+        <div style="border:1px solid #7a7a8a;background:#060636;padding:4px;text-align:center;margin-bottom:4px">
+          <div style="font-size:9px;color:#60709a;font-family:'Share Tech Mono',monospace;letter-spacing:2px">混沌観測所</div>
+          <div style="font-size:7px;color:#404466;font-family:'Share Tech Mono',monospace">konton kansotsusho</div>
+        </div>
+        <div class="bc" style="font-size:10px">リンクはご自由にどうぞ。<br>バナー使用可。</div>
+      </div>
+    </div>
+
+    <!-- 中央カラム -->
+    <div class="cc">
+      <div class="wb">
+        <div class="wh">
+          <div class="wt">✦ 混沌観測所へようこそ ✦</div>
+        </div>
+        <!-- ★ ウェルカム文を書き換えてください -->
+        <div class="wtx">
+          　はじめまして。このサイトは管理人のオリジナル創作をまとめた個人サイトです。<br>
+          　ファンタジー・SF・ホラーなどジャンルはばらばらですが、どうぞゆっくりしていってください。<br>
+          　各作品はメニューの「創作一覧」からアクセスできます。
+        </div>
+        <div class="wn">
+          ⚠ このサイトはデスクトップ表示推奨です。一部ページに閲覧注意の表記があります。
+        </div>
+      </div>
+
+      <div class="bx">
+        <div class="bt">創作一覧 <span class="bn">NEW</span></div>
+        <div class="wg">
+          <!-- ★ 各作品のタイトル・リンク・ジャンルを書き換えてください -->
+          <a class="wc" href="work01/index.html">
+            <div class="wn2">WORK.01</div>
+            <div class="wtt">作品タイトル01</div>
+            <div class="wg2">// FANTASY</div>
+          </a>
+          <a class="wc" href="work02/index.html">
+            <div class="wn2">WORK.02</div>
+            <div class="wtt">作品タイトル02</div>
+            <div class="wg2">// SCI-FI</div>
+          </a>
+          <a class="wc" href="work03/index.html">
+            <div class="wn2">WORK.03</div>
+            <div class="wtt">作品タイトル03</div>
+            <div class="wg2">// HORROR</div>
+          </a>
+          <a class="wc" href="work04/index.html">
+            <div class="wn2">WORK.04</div>
+            <div class="wtt">作品タイトル04</div>
+            <div class="wg2">// ORIGINAL</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="bx">
+        <div class="bt">更新情報</div>
+        <!-- ★ 更新のたびにここに追記してください -->
+        <div class="ui">
+          <div class="ud">26.05.10</div>
+          <div class="ut">サイトを開設しました。<span class="bn">NEW</span></div>
+        </div>
+      </div>
+
+      <div class="br">
+        <div class="st hl">NEOCITIES</div>
+        <div class="st">DESKTOP推奨</div>
+        <div class="st">NO AI</div>
+        <div class="st hl">ORIGINAL</div>
+        <div class="st">FREE LINK</div>
+      </div>
+    </div>
+
+    <!-- 右カラム -->
+    <div class="cr">
+      <div class="bx">
+        <div class="bt">最近の更新</div>
+        <div class="bc" style="display:flex;flex-direction:column;gap:3px">
+          <div style="color:#d08860;font-size:9px">▷ WORK.01</div>
+          <div>キャラ紹介更新</div>
+          <div style="color:#d08860;font-size:9px;margin-top:3px">▷ WORK.02</div>
+          <div>あらすじ追加</div>
+          <div style="color:#d08860;font-size:9px;margin-top:3px">▷ WORK.03</div>
+          <div>世界観ページ公開</div>
+        </div>
+      </div>
+
+      <div class="bx">
+        <div class="bt">リンク</div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <!-- ★ 相互リンク先を書き換えてください -->
+          <a class="nl" href="#" style="font-size:11px" target="_blank">相互リンク先01</a>
+          <a class="nl" href="#" style="font-size:11px" target="_blank">相互リンク先02</a>
+          <a class="nl" href="links.html" style="font-size:11px">リンク一覧へ</a>
+        </div>
+      </div>
+
+      <!-- SoundCloud Now Playing -->
+      <div class="bx sc-wrap">
+        <div class="bt">Now Playing</div>
+        <div class="sc-embed">
+          <!--
+            ★★★ SoundCloud埋め込み手順 ★★★
+            1. SoundCloudで流したい曲を開く
+            2. 曲名の下の「・・・」→「共有」→「埋め込み」をクリック
+            3. 表示されたiframeコードをコピーして↓のプレースホルダーと差し替える
+            例:
+            <iframe width="100%" height="80"
+              scrolling="no" frameborder="no" allow="autoplay"
+              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/XXXXXXX&color=%236e1010&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+            </iframe>
+          -->
+          <div class="sc-placeholder">
+            ♪ ♪ ♪<br><br>
+            SoundCloudの埋め込みコードを<br>
+            ここに貼り付けてください<br><br>
+            <span style="font-size:8px;color:#404466">（index.html の Now Playing 欄を編集）</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bx">
+        <div class="bt">スタンプ</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px">
+          <!-- ★ 好きなスタンプに書き換えてください -->
+          <div class="st" style="text-align:center;padding:3px 2px">創作好き</div>
+          <div class="st" style="text-align:center;padding:3px 2px">夜型人間</div>
+          <div class="st" style="text-align:center;padding:3px 2px">読書好き</div>
+          <div class="st" style="text-align:center;padding:3px 2px">深夜勢</div>
+        </div>
+      </div>
+
+      <div class="dd">・:*+.:｡ﾟ.:*+.:｡ﾟ</div>
+
+      <div class="bx">
+        <div class="bt">連絡先</div>
+        <div class="bc">
+          <!-- ★ SNSのURLを書き換えてください -->
+          <a class="nl" href="#" target="_blank" style="font-size:11px">X (Twitter)</a>
+          <a class="nl" href="#" target="_blank" style="font-size:11px">Misskey</a>
+          <a class="nl" href="mailto:your@email.com" style="font-size:11px">お問い合わせ</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /tc -->
+
+  <div class="sf">
+    (C) 混沌観測所 — All rights reserved. — Last updated: 2026.05.10 — Best viewed on desktop
+  </div>
+
+</div><!-- /sw -->
+</body>
+</html>
