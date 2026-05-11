@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- version: 2.6 | 2026.05.10 -->
+  <!-- version: 2.8 | 2026.05.11 -->
   <title>混沌観測所</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -145,15 +145,12 @@
     }
     .wn { margin-top: 8px; font-size: 11px; color: #d08860; border-top: 1px dashed #7a7a8a; padding-top: 6px; font-family: 'DotGothic16', monospace; }
 
-    /* ---- 創作一覧（新レイアウト） ---- */
+    /* ---- 創作一覧 ---- */
     .works-area {
       border: 1px solid #7a7a8a;
       background: #12127088;
       padding: 6px;
       position: relative;
-      /* キャラ画像がはみ出るようにoverflowはvisibleにしたいが
-         ボックスの見た目を保つためここはhiddenのまま。
-         キャラ画像はworks-innerで制御する */
       overflow: visible;
     }
     .works-title-bar {
@@ -228,11 +225,6 @@
     .work-name { font-size: 13px; color: #c0d0ee; font-family: 'DotGothic16', monospace; }
     .work-genre { font-size: 9px; color: #60709a; font-family: 'Share Tech Mono', monospace; margin-top: 3px; }
 
-    /* ---- 更新情報 ---- */
-    .ui { display: flex; gap: 6px; font-size: 11px; padding: 3px 0; border-bottom: 1px dashed #1e1e6a; align-items: flex-start; font-family: 'DotGothic16', monospace; }
-    .ud { color: #606888; font-family: 'Share Tech Mono', monospace; white-space: nowrap; font-size: 9px; margin-top: 1px; }
-    .ut { color: #8a9ccc; line-height: 1.6; }
-
     /* ---- NEWバッジ ---- */
     @keyframes bl { 0%,100%{opacity:1} 50%{opacity:0} }
     .bn { display: inline-block; background: #6e1010; color: #e8ddd0; font-size: 7px; padding: 1px 4px; font-family: 'Share Tech Mono', monospace; vertical-align: middle; margin-left: 4px; animation: bl 1.5s infinite; }
@@ -265,17 +257,6 @@
     }
     .sns-btn:hover { background: #1e1e8a; color: #fff; border-color: #a0b0d0; }
 
-    /* ---- SoundCloud ---- */
-    .sc-placeholder {
-      background: #0a0a40;
-      border: 1px dashed #7a7a8a;
-      padding: 10px;
-      text-align: center;
-      font-size: 10px;
-      color: #606888;
-      font-family: 'Share Tech Mono', monospace;
-      line-height: 1.8;
-    }
 
     /* ---- フレンドバナー ---- */
     .friend-banners {
@@ -481,19 +462,19 @@
             <iframe
               style="border-radius:4px;display:block;"
               src="https://open.spotify.com/embed/track/5HEpI1nOR0vHicKklJRvvd?utm_source=generator&theme=0"
-              width="100%" height="152" frameborder="0"
+              width="100%" height="80" frameborder="0"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"></iframe>
             <iframe
               style="border-radius:4px;display:block;"
               src="https://open.spotify.com/embed/album/6D8mIYnzouehNA0S0E3qvB?utm_source=generator&theme=0"
-              width="100%" height="152" frameborder="0"
+              width="100%" height="80" frameborder="0"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"></iframe>
             <iframe
               style="border-radius:4px;display:block;"
               src="https://open.spotify.com/embed/album/5TmJGbFYTWRypuMNG3q44c?utm_source=generator&theme=0"
-              width="100%" height="152" frameborder="0"
+              width="100%" height="80" frameborder="0"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"></iframe>
           </div>
