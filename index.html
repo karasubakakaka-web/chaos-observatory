@@ -36,7 +36,7 @@
     /* ---- ヘッダーバナー ---- */
     .header-banner {
       position: relative;
-      height: 52px;
+      height: 110px;
       overflow: hidden;
       border-bottom: 2px solid #909098;
       background-image: url('header-banner.webp');
@@ -50,8 +50,25 @@
     }
     .header-banner-content {
       position: absolute; inset: 0;
-      display: flex; align-items: center;
-      padding: 0 10px; gap: 10px;
+      display: flex; align-items: flex-start;
+      padding: 6px 10px 0 10px; gap: 10px;
+    }
+    .header-site-title {
+      position: absolute;
+      left: 12px; right: 0; bottom: 0;
+      display: flex; align-items: center; justify-content: flex-start;
+      height: 72px;
+      pointer-events: none;
+    }
+    .header-site-title span {
+      font-family: 'DotGothic16', monospace;
+      font-size: 34px;
+      color: #e8ddd0;
+      letter-spacing: 8px;
+      text-shadow:
+        0 0 12px rgba(180,120,100,0.9),
+        0 0 28px rgba(120,80,160,0.6),
+        2px 2px 4px rgba(0,0,0,0.8);
     }
     .tbt { display: flex; gap: 4px; }
     .tbtn {
@@ -303,6 +320,9 @@
       </div>
       <div class="header-menu">File | View | Edit | New | Help</div>
       <div class="header-exit">Exit | ✕</div>
+    </div>
+    <div class="header-site-title">
+      <span>混沌観測所</span>
     </div>
   </div>
 
