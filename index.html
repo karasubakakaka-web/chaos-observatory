@@ -186,6 +186,7 @@
       min-height: 260px;
       overflow: visible;
       padding-top: 8px;
+      margin-top: 6px;
     }
 
     /* キャラクター画像エリア */
@@ -197,9 +198,12 @@
     }
     .chara-img {
       position: absolute;
-      bottom: 10px;
+      bottom: 0;
       left: -10px;
       width: 220px;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: bottom left;
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
