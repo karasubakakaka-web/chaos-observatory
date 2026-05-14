@@ -183,7 +183,7 @@
     .works-inner {
       display: flex;
       position: relative;
-      min-height: 300px;
+      min-height: 260px;
       overflow: visible;
     }
 
@@ -211,14 +211,17 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 8px 14px 4px;
+      justify-content: stretch;
+      gap: 6px;
+      padding: 10px 8px 10px 4px;
       position: relative;
       z-index: 2;
     }
     .work-item {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
       text-decoration: none;
       border: 1px solid #7a7a8a;
       background: #0c0c5299;
@@ -246,7 +249,7 @@
     .works-alt-divider {
       border-top: 1px dashed #4a3a6a;
       margin: 4px 0 0 0;
-      padding: 6px 8px 10px 8px;
+      padding: 14px 8px 10px 8px;
       position: relative;
     }
     .works-alt-label {
@@ -258,17 +261,17 @@
       background: #12127088;
       padding: 0 6px;
       position: absolute;
-      top: -6px;
+      top: 4px;
       left: 12px;
     }
     .works-alt-inner {
       display: flex;
-      align-items: center;
+      align-items: stretch;
       gap: 10px;
       padding-top: 4px;
     }
     .works-alt-chara {
-      width: 110px;
+      width: 220px;
       flex-shrink: 0;
       display: flex;
       align-items: flex-end;
@@ -276,14 +279,16 @@
       overflow: visible;
     }
     .works-alt-chara img {
-      width: 120px;
+      width: 220px;
       image-rendering: pixelated;
       display: block;
     }
     .work-item.alt {
       border: 1px dashed #5a4a8a;
       background: #0d0a2299;
-      flex: 1;
+      flex: none;
+      width: 160px;
+      min-height: 80px;
     }
     .work-item.alt:hover {
       border-color: #9080c0;
