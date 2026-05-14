@@ -185,6 +185,7 @@
       position: relative;
       min-height: 260px;
       overflow: visible;
+      padding-top: 8px;
     }
 
     /* キャラクター画像エリア */
@@ -197,12 +198,8 @@
     .chara-img {
       position: absolute;
       bottom: 10px;
-      top: 30px;
       left: -10px;
       width: 220px;
-      height: calc(100% - 40px);
-      object-fit: contain;
-      object-position: bottom left;
       opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
@@ -215,7 +212,7 @@
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: stretch;
+      justify-content: space-between;
       gap: 6px;
       padding: 10px 8px 10px 4px;
       position: relative;
@@ -272,7 +269,6 @@
       display: flex;
       align-items: stretch;
       gap: 10px;
-      padding-top: 0;
     }
     .works-alt-chara {
       flex: 1;
@@ -290,8 +286,6 @@
       border: 1px dashed #5a4a8a;
       background: #0d0a2299;
       flex: 1;
-      width: auto;
-      min-height: unset;
     }
     .work-item.alt:hover {
       border-color: #9080c0;
