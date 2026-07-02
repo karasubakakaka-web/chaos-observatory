@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- version: 2.9 | 2026.07.02 | WORK.04（死神のフラスコ）関連を削除 -->
+  <!-- version: 3.1 | 2026.07.02 | 連載小説CTA→「連載絵物語」表記に変更 -->
   <title>混沌観測所</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -250,6 +250,58 @@
     .work-name { font-size: 13px; color: #c0d0ee; font-family: 'DotGothic16', monospace; }
     .work-genre { font-size: 9px; color: #60709a; font-family: 'Share Tech Mono', monospace; margin-top: 3px; }
 
+    /* ---- 連載小説CTA（創作一覧の上・専用カラム） ---- */
+    .novel-cta { border: 2px solid #7a7a8a; background: #12127088; padding: 6px; }
+    .novel-cta .bt { margin: -6px -6px 0 -6px; }
+    .novel-cta-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 10px 12px;
+    }
+    @keyframes cta-tw { 0%,100%{opacity:1} 50%{opacity:0.25} }
+    .novel-cta-appeal {
+      font-family: 'DotGothic16', monospace;
+      font-size: 18px;
+      color: #e8ddd0;
+      letter-spacing: 4px;
+      text-shadow: 0 0 10px rgba(208,136,96,0.7), 1px 1px 3px rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .novel-cta-appeal::before,
+    .novel-cta-appeal::after {
+      content: '✦';
+      font-size: 13px;
+      color: #d08860;
+      animation: cta-tw 1.5s infinite;
+    }
+    .novel-cta-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      text-decoration: none;
+      border: 1px solid #7a7a8a;
+      background: #0c0c5299;
+      padding: 10px 42px;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .novel-cta-btn:hover { border-color: #a0b0d0; background: #16167acc; }
+    .novel-cta-btn::after {
+      content: 'ENTER ▶';
+      position: absolute; bottom: 4px; right: 6px;
+      font-size: 8px; color: #7a7a8a;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .novel-cta-btn:hover::after { color: #a0b0d0; }
+    .novel-cta-btn-sub { font-size: 8px; color: #7a7a8a; font-family: 'Share Tech Mono', monospace; letter-spacing: 2px; }
+    .novel-cta-btn-title { font-size: 15px; color: #c0d0ee; font-family: 'DotGothic16', monospace; letter-spacing: 2px; }
+    .novel-cta-note { font-size: 9px; color: #60709a; font-family: 'Share Tech Mono', monospace; letter-spacing: 1px; }
+
     /* ---- NEWバッジ ---- */
     @keyframes bl { 0%,100%{opacity:1} 50%{opacity:0} }
     .bn { display: inline-block; background: #6e1010; color: #e8ddd0; font-size: 7px; padding: 1px 4px; font-family: 'Share Tech Mono', monospace; vertical-align: middle; margin-left: 4px; animation: bl 1.5s infinite; }
@@ -424,6 +476,20 @@
         </div>
         <div class="wn">
           ⚠ このサイトはデスクトップ表示推奨です。一部ページに閲覧注意の表記があります。
+        </div>
+      </div>
+
+      <!-- 連載絵物語CTA（創作一覧の上・専用カラム） -->
+      <div class="novel-cta">
+        <div class="bt">連載絵物語 <span class="bn">NEW</span></div>
+        <div class="novel-cta-inner">
+          <div class="novel-cta-appeal">作品本編はこちら</div>
+          <!-- ★ リンク先は仮（novel/ep/001.html）。作品トップページ完成後に差し替え -->
+          <a class="novel-cta-btn" href="novel/ep/001.html">
+            <span class="novel-cta-btn-sub">SERIAL EMONOGATARI</span>
+            <span class="novel-cta-btn-title">作品タイトル（未定）</span>
+          </a>
+          <div class="novel-cta-note">// NOVEL &times; VERTICAL COMIC — TWO TIMELINES</div>
         </div>
       </div>
 
