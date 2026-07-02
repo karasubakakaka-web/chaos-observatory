@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- version: 2.8 | 2026.05.11 -->
+  <!-- version: 2.9 | 2026.07.02 | WORK.04（死神のフラスコ）関連を削除 -->
   <title>混沌観測所</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -250,57 +250,6 @@
     .work-name { font-size: 13px; color: #c0d0ee; font-family: 'DotGothic16', monospace; }
     .work-genre { font-size: 9px; color: #60709a; font-family: 'Share Tech Mono', monospace; margin-top: 3px; }
 
-    /* ---- 別時空エリア ---- */
-    .works-alt-divider {
-      border-top: 1px dashed #4a3a6a;
-      margin: 4px 0 0 0;
-      padding: 22px 8px 10px 8px;
-      position: relative;
-    }
-    .works-alt-label {
-      display: inline-block;
-      font-size: 8px;
-      font-family: 'Share Tech Mono', monospace;
-      color: #7a6aaa;
-      letter-spacing: 2px;
-      background: #12127088;
-      padding: 0 6px;
-      position: absolute;
-      top: 6px;
-      left: 12px;
-    }
-    .works-alt-inner {
-      display: flex;
-      align-items: stretch;
-      gap: 10px;
-    }
-    .works-alt-chara {
-      flex: 1;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      overflow: visible;
-    }
-    .works-alt-chara img {
-      width: 220px;
-      image-rendering: pixelated;
-      display: block;
-    }
-    .work-item.alt {
-      border: 1px dashed #5a4a8a;
-      background: #0d0a2299;
-      flex: 1;
-    }
-    .work-item.alt:hover {
-      border-color: #9080c0;
-      background: #1a1250cc;
-    }
-    .work-item.alt .work-num { color: #c0b0ff; text-shadow: 0 0 6px #000, 1px 1px 3px #000; }
-    .work-item.alt .work-name { color: #e8e0ff; text-shadow: 0 0 8px #000, 1px 1px 4px #000; }
-    .work-item.alt .work-genre { color: #c0b0ff; text-shadow: 0 0 6px #000, 1px 1px 3px #000; }
-    .work-item.alt::after { color: #5a4a8a; }
-    .work-item.alt:hover::after { color: #9080c0; }
-
     /* ---- NEWバッジ ---- */
     @keyframes bl { 0%,100%{opacity:1} 50%{opacity:0} }
     .bn { display: inline-block; background: #6e1010; color: #e8ddd0; font-size: 7px; padding: 1px 4px; font-family: 'Share Tech Mono', monospace; vertical-align: middle; margin-left: 4px; animation: bl 1.5s infinite; }
@@ -387,7 +336,7 @@
 
   <!-- マーキー -->
   <div class="mq">
-    <div class="mqi">★ ようこそ混沌観測所へ ★　現在４作品公開中　★　各作品ページを更新中　★　イラストギャラリー準備中　★　リンク申請受付中　★</div>
+    <div class="mqi">★ ようこそ混沌観測所へ ★　現在３作品公開中　★　各作品ページを更新中　★　イラストギャラリー準備中　★　リンク申請受付中　★</div>
   </div>
 
   <!-- 3カラム -->
@@ -488,7 +437,6 @@
             <img class="chara-img active" id="ci1" src="chara01.png" alt="">
             <img class="chara-img" id="ci2" src="chara02.png" alt="">
             <img class="chara-img" id="ci3" src="chara03.png" alt="">
-            <img class="chara-img" id="ci4" src="chara04.png" alt="">
           </div>
 
           <!-- タイトルリスト -->
@@ -515,21 +463,6 @@
 
         </div>
 
-        <!-- 別時空エリア -->
-        <div class="works-alt-divider">
-          <span class="works-alt-label">// another universe</span>
-          <div class="works-alt-inner">
-            <a class="work-item alt" href="work04/index.html" style="background-image:url('work04_bg.jpg');background-size:cover;background-position:center top;">
-              <div class="work-num">WORK.04</div>
-              <div class="work-name">死神のフラスコ</div>
-              <div class="work-genre">// ORIGINAL</div>
-            </a>
-            <div class="works-alt-chara">
-              <img src="chara04.png" alt="">
-            </div>
-          </div>
-        </div>
-
       </div>
 
       <!-- ブログ紹介 + お気に入り曲（横並び） -->
@@ -554,18 +487,21 @@
           <div class="bt">お気に入り曲</div>
           <div style="display:flex;flex-direction:column;gap:6px;padding-top:2px;">
             <iframe
+              title="お気に入り曲 01"
               style="border-radius:4px;display:block;"
               src="https://open.spotify.com/embed/track/5HEpI1nOR0vHicKklJRvvd?utm_source=generator&theme=0"
               width="100%" height="80" frameborder="0"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"></iframe>
             <iframe
+              title="お気に入り曲 02"
               style="border-radius:4px;display:block;"
               src="https://open.spotify.com/embed/album/6D8mIYnzouehNA0S0E3qvB?utm_source=generator&theme=0"
               width="100%" height="80" frameborder="0"
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"></iframe>
             <iframe
+              title="お気に入り曲 03"
               style="border-radius:4px;display:block;"
               src="https://open.spotify.com/embed/album/5TmJGbFYTWRypuMNG3q44c?utm_source=generator&theme=0"
               width="100%" height="80" frameborder="0"
@@ -642,19 +578,20 @@
 </div><!-- /sw -->
 
 <script>
+  var CHARA_COUNT = 3; // 公開中の作品数（キャラ画像の枚数）
+
   function showChara(n) {
-    // すべて非表示
-    for (let i = 1; i <= 4; i++) {
-      document.getElementById('ci' + i).classList.remove('active');
+    // すべて非表示にしてから対象だけ表示
+    for (var i = 1; i <= CHARA_COUNT; i++) {
+      var el = document.getElementById('ci' + i);
+      if (el) el.classList.remove('active');
     }
-    // 対象だけ表示
-    document.getElementById('ci' + n).classList.add('active');
+    var target = document.getElementById('ci' + n);
+    if (target) target.classList.add('active');
   }
+
   function hideChara() {
-    for (let i = 1; i <= 4; i++) {
-      document.getElementById('ci' + i).classList.remove('active');
-    }
-    document.getElementById('ci1').classList.add('active');
+    showChara(1); // デフォルト表示に戻す
   }
 </script>
 
